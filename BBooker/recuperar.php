@@ -4,9 +4,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
-require '../../PHPMailer/Exception.php';
-require '../../PHPMailer/PHPMailer.php';
-require '../../PHPMailer/SMTP.php';
+require '../PHPMailer/Exception.php';
+require '../PHPMailer/PHPMailer.php';
+require '../PHPMailer/SMTP.php';
 
 // Verificar si se enviaron los datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["recuperar"])) {
