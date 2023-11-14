@@ -14,9 +14,11 @@ session_start();
 
         /* Estilo para el cuerpo de la página */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Overpass', sans-serif;
+            font-weight: normal;
+            font-size: 100%;
+            color: #464645;
             margin: 0;
-            padding: 0;
             background-color: #F4F4F4;
         }
 
@@ -235,13 +237,15 @@ session_start();
             background-color: #3c4245;
         }
 
+        
+
     </style>
     
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
 
 </head>
 <body>
-    <header>
+<header>
         <?php
             // Verificar si el usuario ha iniciado sesión
             if (isset($_SESSION["usuario"])) {
@@ -309,7 +313,7 @@ session_start();
         }
 
         // Consulta para obtener las reservas del usuario
-        $consultaReservas = $conex->query("SELECT ID_RESERVA, HORA_INICIO, HORA_FIN, FECHA, ID_PISTA FROM reservas WHERE id_usuario = '$idUsuario' AND fecha >= CURRENT_DATE;");
+        $consultaReservas = $conex->query("SELECT ID_RESERVA, HORA_INICIO, HORA_FIN, FECHA, ID_PISTA FROM reservas WHERE id_usuario = '$idUsuario' AND fecha < CURRENT_DATE;");
 
         // Mostrar las reservas
         if ($consultaReservas->num_rows > 0) {
@@ -327,7 +331,14 @@ session_start();
                 // Obtener el nombre de la pista
                 $idPista = $row["ID_PISTA"];
                 $consultaPista = $conex->query("SELECT nombre_pista FROM pistas WHERE ID_PISTA = '$idPista';");
-                $nombrePista = $consultaPista->fetch_row()[0];
+
+                // Verificar si hay resultados en la consulta
+                if ($consultaPista->num_rows > 0) {
+                    $nombrePista = $consultaPista->fetch_row()[0];
+                } else {
+                    // Manejar el caso en que no hay resultados
+                    $nombrePista = "Nombre no disponible";
+                }
 
                 echo "<tr><td>" . $row["HORA_INICIO"] . "</td><td>" . $horaFinCalculada . "</td><td>" . $row["FECHA"] . "</td><td>" . $nombrePista . "</td>";
                 
@@ -341,12 +352,6 @@ session_start();
                 echo "<input type='hidden' name='hora_fin' value='" . $row["HORA_FIN"] . "'>";
                 echo "<input type='hidden' name='fecha' value='" . $row["FECHA"] . "'>";
                 echo "<input type='hidden' name='id_pista' value='" . $row["ID_PISTA"] . "'>";
-                // Estilo para el botón de modificar
-                echo "<button class='button update-button' type='submit' name='modificar'>";
-                echo "<span>Modificar</span>";
-                echo "<i class='fas fa-pencil-alt'></i>"; // Icono de lápiz
-                echo "</button>";
-                echo "</form>";
 
                 // Agregar botón para eliminar
                 echo "<form method='post' action=''>";
@@ -377,7 +382,8 @@ session_start();
             echo "</button>";
             echo "</a>";
             echo "</div>";
-            
+
+
             echo "</div>"; // Cierre del div contenedorcentrado
             echo "</div>"; // Cierre del div contenedor
         } else {
@@ -395,6 +401,7 @@ session_start();
             echo "</button>";
             echo "</a>";
             echo "</div>";
+
 
             echo "</div>"; // Cierre del div contenedorcentrado
             echo "</div>"; // Cierre del div contenedor

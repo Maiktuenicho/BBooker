@@ -5,109 +5,149 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Crear</title>
+         <!-- Metadatos del documento -->
+         <title>Crear</title>
         <meta charset="UTF-8">
         <meta name="author" content="Agustín Mercado Prieto" />
-        <meta name="copyright" content="Agustín Mercado Prieto" />
+        <!-- Descripción del contenido del documento -->
         <meta name="description" content="Creación de productos para CRUD en PHP" />
-        <meta name="keyword" content="PHP,CRUD,Crear,Productos,Cocina" />
-        <link rel="stylesheet" href="../ESTILOS_PROYECTO/update.css">
+        <!-- Palabras clave relacionadas con el contenido del documento -->
+        <meta name="keyword" content="PHP, CRUD, Crear, Productos, Cocina" />
+        <!-- Estilos CSS -->
         <style>
+        /* Estilos generales */
         body {
             font-family: 'Overpass', sans-serif;
             font-weight: normal;
             font-size: 100%;
-            color: #1b262c;
+            color: #464645;
             margin: 0;
-            background-color: #5f6769;
+            background-color: #F4F4F4;
         }
 
-        #login h3 {
-            text-align: center;
-            margin-bottom: 5px; 
-            margin-top: 0px;
-        }
-
+        /* Estilos del contenedor principal */
         #contenedor {
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            /*background-image: url(fondo_difuminado_login.jpg);*/
-            background-position: center;
-            background-size: cover;
         }
 
+        /* Estilos del contenedor central */
         #contenedorcentrado {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            min-width: 380px;
+            max-width: 380px;
             width: 90%;
-            border-radius: 10px;
+            background-color: #F4F4F4;
+            border-radius: 10px 10px 10px 10px;
+            -moz-border-radius: 10px 10px 10px 10px;
+            -webkit-border-radius: 10px 10px 10px 10px;
+            -webkit-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
             padding: 30px;
             box-sizing: border-box;
-            opacity: 1;
         }
 
-        #login {
+        /* Estilos del formulario de recuperar */
+        #crear {
             width: 100%;
-            max-width: 345px;
-            min-width: 345px;
-            padding: 30px;
-            background-color: #719192;
-            box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-            border-radius: 3px;
+            max-width: 200px;
+            min-width: 320px;
+            padding: 10px 30px 50px 30px;
+            background-color: #9A8A63;
+            -webkit-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+            border-radius: 3px 3px 3px 3px;
+            -moz-border-radius: 3px 3px 3px 3px;
+            -webkit-border-radius: 3px 3px 3px 3px;
             box-sizing: border-box;
             opacity: 1;
+            filter: alpha(opacity=1);
         }
 
-        #login label {
+        /* Estilos de etiquetas en el formulario */
+        #crear label {
             display: block;
             font-size: 120%;
-            color: #3c4245;
-            margin-top: 5px;
+            color: #F4F4F4;
+            margin-top: 10px;
         }
 
-
-        #login input {
+        /* Estilos de campos de entrada en el formulario */
+        #crear input {
             font-size: 110%;
-            color: #1b262c;
+            color: #464645;
             display: block;
             width: 100%;
-            height: 40px;
-            margin-bottom: 10px;
-            padding: 5px 10px;
+            height: 30px;
+            margin-bottom: 5px;
+            padding: 5px 5px 5px 10px;
             box-sizing: border-box;
             border: none;
-            border-radius: 3px;
+            border-radius: 3px 3px 3px 3px;
+            -moz-border-radius: 3px 3px 3px 3px;
+            -webkit-border-radius: 3px 3px 3px 3px;
         }
 
-        #login input::placeholder {
+        /* Estilos del texto de marcador de posición en el formulario */
+        #crear input::placeholder {
             color: #E4E4E4;
         }
 
-        #login button, #login input[type="submit"] {
+        /* Estilos del botón en el formulario */
+        #crear button, #crear a.volver {
             font-size: 110%;
             color: #1b262c;
+            background-color: #dfcdc3;
             width: 100%;
             height: 40px;
             border: none;
             border-radius: 3px;
-            background-color: #dfcdc3;
             margin-top: 5px;
+            position: relative;
+            display: flex;
+            align-items: center; /* Centramos verticalmente */
+            justify-content: center; /* Centramos horizontalmente */
+            overflow: hidden;
+            text-decoration: none; /* Quita el subrayado del enlace */
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        #login button:hover, #login input[type="submit"]:hover {
+        /* Estilos del botón en estado hover */
+        #crear button:hover, #crear a.volver:hover {
             background-color: #3c4245;
             color: #dfcdc3;
         }
-        </style>
+
+        /* Estilos del icono dentro del botón */
+        #crear button i, #crear a.volver i {
+            margin-right: 5px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* Estilos del icono dentro del botón en estado hover */
+        #crear button:hover i.crear-icon, #crear a.volver:hover i.volver-icon {
+            opacity: 1;
+        }
+
+        #crear h3 {
+            text-align: center; 
+            color: #464645;
+        }
+    </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
     <body>
         <div id="contenedor">
             <div id="contenedorcentrado">
-                <div id="login">
+                <div id="crear">
                         <h3>CREAR</h3>
                         <form name="insertar" id="insertar" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                                 <table>
@@ -143,36 +183,40 @@
                                     </tr>
                                 </table>
                                 <br>
-                                <div class="center">
-                                    <input type="submit" name="insertar" value="DARSE DE ALTA" class='login' style='vertical-align:middle'>
-                                </div>
+                                <button type="submit" name="insertar" class='crear' style='vertical-align:middle'>
+                                    <i class="fas fa-pencil-alt crear-icon"></i> <span>DARSE DE ALTA</span>
+                                </button>
                         </form>
+
+                        <!-- Procesamiento de datos del formulario -->
                         <?php
 
                         //pattern="(?=.*\d)(?=.*[$@#$!%*?&])(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        /* Se verifica si el formulario ha sido enviado */
                         if (isset($_POST['insertar'])) {
+                            // Recolección de datos del formulario
                             $usuario = trim($_POST['usuario']);
                             $nombre = trim($_POST['nombre']);
                             $email = trim($_POST['email']);
                             $numero = trim($_POST['numero']);
                             $password = trim($_POST['pass']);
-                        
+
                             try {
                                 // Insertar usuario
                                 $insert = "INSERT INTO usuarios(usuario, contraseña, nombre_completo, correo, telefono)
                                             VALUES ('$usuario','$password','$nombre','$email', '$numero')";
                                 $result = $conex->query($insert);
-                        
+
+                                // Mensaje de éxito si la inserción es exitosa
                                 echo "<h4>Usuario y contraseña guardados con éxito</h4>";
                             } catch (mysqli_sql_exception $error_insert) {
+                                // Manejo de errores en caso de fallo en la inserció
                                 echo "Error al insertar los datos: " . $error_insert->getMessage();
                             }
                         }                    
                         ?>
-                            <a href='login.php' class="center">
-                                    <button class='button' style='vertical-align:middle'>
-                                        <span>VOLVER</span>
-                                    </button>
+                            <a href='login.php' class="volver">
+                                <i class="fas fa-arrow-left volver-icon"></i> <span>VOLVER</span>
                             </a>
                 </div>
             </div>

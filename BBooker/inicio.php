@@ -1,4 +1,3 @@
-
 <?php
 // Iniciar la sesión
 session_start();
@@ -12,19 +11,19 @@ session_start();
     <title>Reservas de Pistas de Baloncesto</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <style>
-         body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F4F4F4;
+        }
 
-header {
-    background-color: #9A8A62; /* Cambia el color del encabezado */
-    color: white;
-    padding: 5px;
-    text-align: center;
-}
+        header {
+            background-color: #9A8A62;
+            color: white;
+            padding: 5px;
+            text-align: center;
+        }
 
         nav {
             background-color: #444;
@@ -38,81 +37,65 @@ header {
             text-decoration: none;
             margin: 0 5px;
             font-weight: bold;
+            transition: color 0.3s; /* Agregamos la transición al color */
         }
 
-        main {
-            padding: 20px;
-            text-align: center; /* Alinea el contenido principal al centro */
-        }
-
-        #cerrar-sesion,
-        #perfil-link {
-            text-decoration: none;
-            color: #fff;
-            padding: 4px 16px;
-            border-radius: 4px;
-            background-color: #555;
-            display: inline-block;
-            margin-top: 10px; /* Agrega espacio entre los enlaces y el contenido principal */
-        }
-
-        #cerrar-sesion i,
-        #perfil-link i {
-            font-size: 20px;
-            margin-right: 0px;
+        nav a:hover {
+            color: #9A8A62; /* Cambiamos el color al pasar el ratón */
         }
 
         .Container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100vh; /* Ajusta la altura al 100% de la ventana para centrar verticalmente */
-}
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh; /* Ajusta la altura al 100% de la ventana para centrar verticalmente */
+        }
 
-.button-container {
-    text-align: center;
-    margin-top: 20px;
-}
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-.button12 {
-    cursor: pointer;
-    background-color: #9A8A62; /* Cambia el color de fondo del botón */
-    width: 330px;
-    height: 64px;
-    padding: 20px 50px;
-    line-height: 64px;
-    position: relative;
-    margin: 10px;
-    display: inline-block;
-}
+        .button12 {
+            cursor: pointer;
+            background-color: #9A8A62; /* Cambia el color de fondo del botón */
+            width: 330px;
+            height: 64px;
+            padding: 20px 50px;
+            line-height: 64px;
+            position: relative;
+            margin: 10px;
+            display: inline-block;
+            text-align: left;
+        }
 
-.button12 span {
-    color: #fff;
-    display: inline-block;
-    padding-left: 35px;
-    text-transform: uppercase;
-    font: bold 18px/66px Arial;
-    transform: scaleX(0.6);
-    letter-spacing: 3px;
-    transform-origin: center left;
-    transition: color 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
+        .button12 span {
+            color: #fff;
+            display: inline-block;
+            padding-left: 35px;
+            text-transform: uppercase;
+            font: bold 18px/66px Arial;
+            transform: scaleX(0.6);
+            letter-spacing: 3px;
+            transform-origin: center left;
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
 
-.button12 em {
-    position: absolute;
-    height: 1px;
-    background: #fff;
-    width: 47%;
-    right: 23px;
-    top: 50%;
-    transform: scaleX(0.25);
-    -webkit-transform: scaleX(0.25);
-    transform-origin: center right;
-    transition: all 0.3s ease;
-    z-index: 1;
-}
+        .button12 em {
+            position: absolute;
+            height: 1px;
+            background: #fff;
+            width: 47%;
+            right: 23px;
+            top: 50%;
+            transform: scaleX(0.25);
+            -webkit-transform: scaleX(0.25);
+            transform-origin: center right;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
 
         .button12:before,
         .button12:after {
@@ -174,7 +157,7 @@ header {
                 $consulta_usuario =$conex->query("SELECT usuario FROM usuarios WHERE correo = '$correo';");
                 $usuario=$consulta_usuario->fetch_row();
                 echo "<h1>";
-                echo "Bienvenido a BasketBooker $usuario[0]";
+                echo "Bienvenido a BBooker $usuario[0]";
                 echo "</h1>";
 
             } else {
@@ -188,14 +171,16 @@ header {
     <nav>
         <a id="perfil-link" href="perfil.php">
             <i class="perfil-link fa fa-solid fa-user"></i>
+                Perfil
         </a>
         <a id="cerrar-sesion" href="login.php">
             <i class="cerrar-sesion fa fa-solid fa-arrow-right"></i>
+                Salir
         </a>
     </nav>
 
     <div class="button-container">
-        <a href="calendario.html" class="button12">
+        <a href="calendario.php" class="button12">
             <em> </em>   
             <span>
                 Disponibilidad
@@ -205,7 +190,14 @@ header {
         <a href="mis_reservas.php" class="button12">
             <em></em>   
             <span>
-            Mis reservas
+                Mis reservas
+            </span>
+        </a>
+        <br>
+        <a href="historial.php" class="button12">
+            <em></em>   
+            <span>
+                Historial
             </span>
         </a>
     </div>

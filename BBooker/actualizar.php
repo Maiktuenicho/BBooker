@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-size: 100%;
             color: #1b262c;
             margin: 0;
-            background-color: #5f6769;
+            background-color: #F4F4F4;
         }
 
         .contenedor {
@@ -65,7 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             min-width: 100vw;
             width: 100%;
             height: 100%;
-            background-image: url(../imagenes/fondo_difuminado_login.jpg);
             background-position: center;
             background-size: cover;
         }
@@ -78,13 +77,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             min-width: 380px;
             max-width: 900px;
             width: 90%;
-            background-color: #5f6769;
+            background-color: #F4F4F4;
             border-radius: 10px;
             box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
             padding: 30px;
             box-sizing: border-box;
             margin: auto; 
             text-align: center;
+        }
+
+        .formulario-actualizar{
+            width: 100%;
+            max-width: 320px;
+            min-width: 320px;
+            padding: 30px 30px 50px 30px;
+            background-color: #9A8A63;
+            -webkit-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+            border-radius: 3px 3px 3px 3px;
+            -moz-border-radius: 3px 3px 3px 3px;
+            -webkit-border-radius: 3px 3px 3px 3px;
+            box-sizing: border-box;
+            opacity: 1;
+            filter: alpha(opacity=1);
+            margin: auto;
+        }
+
+        header {
+            background-color: #9A8A62;
+            color: white;
+            padding: 5px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            color: white;
+            padding: 5px;
+            text-align: right;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+            font-weight: bold;
+            transition: color 0.3s; /* Agregamos la transición al color */
+        }
+
+        nav a:hover {
+            color: #9A8A62; /* Cambiamos el color al pasar el ratón */
         }
 
         table {
@@ -124,27 +167,86 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding-right: 8px;
         }
 
-        .button-link {
-            text-decoration: none;
-        }
+        /* Estilo para el botón de actualizar */
+        .button.update-button {
+                position: relative;
+                overflow: hidden;
+            }
 
-        .button-link button {
-            font-family: 'Overpass', sans-serif;
-            font-size: 110%;
-            color: #1b262c;
-            width: 20%;
-            height: 40px;
-            border: none;
-            border-radius: 3px 3px 3px 3px;
-            -moz-border-radius: 3px 3px 3px 3px;
-            -webkit-border-radius: 3px 3px 3px 3px;
-            background-color: #dfcdc3;
-            margin-top: 10px;
-        }
+            .button.update-button span {
+                z-index: 1;
+                color: #1b262c; /* Color inicial de las letras */
+                transition: color 0.3s ease; /* Transición para el cambio de color */
+            }
 
-        .button-link button:hover {
-            background-color: #3c4245;
-        }
+            .button.update-button i {
+                margin-left: 10px;
+                color: #fff;
+                opacity: 0; /* Inicia con opacidad 0 */
+                transition: opacity 0.3s ease;
+            }
+
+            /* Cambiar el color del texto al pasar el ratón sobre el botón */
+            .button.update-button:hover span {
+                color: #fff;
+            }
+
+            /* Mostrar el icono al pasar el ratón sobre el botón */
+            .button.update-button:hover i {
+                opacity: 1;
+            }
+
+            /* Estilo para el botón de volver */
+            .button.back-button {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .button.back-button span {
+                z-index: 1;
+                color: #1b262c; /* Color inicial de las letras */
+                transition: color 0.3s ease; /* Transición para el cambio de color */
+            }
+
+            .button.back-button i {
+                margin-left: 10px;
+                color: #fff;
+                opacity: 0; /* Inicia con opacidad 0 */
+                transition: opacity 0.3s ease;
+            }
+
+            /* Cambiar el color del texto al pasar el ratón sobre el botón */
+            .button.back-button:hover span {
+                color: #fff;
+            }
+
+            /* Mostrar el icono al pasar el ratón sobre el botón */
+            .button.back-button:hover i {
+                opacity: 1;
+            }
+
+            /* Estilo para los enlaces de botones */
+            .button-link {
+                text-decoration: none;
+            }
+
+            .button-link button {
+                font-family: 'Overpass', sans-serif;
+                font-size: 110%;
+                color: #1b262c;
+                width: 100%; /* Modificado para que tenga el mismo ancho que los inputs */
+                height: 40px; /* Establecido la altura para que coincida con los inputs */
+                border: none;
+                border-radius: 3px 3px 3px 3px;
+                -moz-border-radius: 3px 3px 3px 3px;
+                -webkit-border-radius: 3px 3px 3px 3px;
+                background-color: #dfcdc3;
+                margin-top: 10px;
+            }
+
+            .button-link button:hover {
+                background-color: #3c4245;
+            }
 
         .form-container {
             margin-top: 20px;
@@ -153,7 +255,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         .form-container input {
             font-family: 'Overpass', sans-serif;
-            font-size: 110%;
+            font-size: 100%;
             color: #1b262c;
             width: 100%;
             height: 40px;
@@ -184,17 +286,64 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-family: 'Overpass', sans-serif;
             font-size: 18px;
             color: #3c4245;
-            margin-top: 20px;
+            margin-top: 10px;
         }
+
+        label{
+            font-weight: bold;
+            color: #F4F4F4;
+        }
+
+    
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+<header>
+        <?php
+            // Verificar si el usuario ha iniciado sesión
+            if (isset($_SESSION["usuario"])) {
+                // Obtener el nombre de usuario desde la sesión
+                $correo = $_SESSION["usuario"];
 
-<br><br>
+                // Conexion con la base de datos
+                require_once 'conexion.php';
+
+                $consulta_usuario =$conex->query("SELECT usuario FROM usuarios WHERE correo = '$correo';");
+                $usuario=$consulta_usuario->fetch_row();
+                echo "<h1>";
+                echo "Bienvenido a BBooker $usuario[0]";
+                echo "</h1>";
+
+            } else {
+                // Redirigir al usuario a la página de inicio de sesión si no ha iniciado sesión
+                header("Location: login.php");
+                exit(); // Asegura que el script se detenga después de redirigir
+            }
+        ?>
+    </header>
+
+    <nav>
+        <a id="home-link" href="inicio.php">
+            <i class="fa fa-solid fa-home"></i>
+                Inicio
+        </a>
+        <a id="perfil-link" href="perfil.php">
+            <i class="perfil-link fa fa-solid fa-user"></i>
+                Perfil
+        </a>
+        <a id="cerrar-sesion" href="login.php">
+            <i class="cerrar-sesion fa fa-solid fa-arrow-right"></i>
+                Salir
+        </a>
+    </nav>
+
+    <br><br>
 
 <div class="contenedor">
     <div class="contenedorcentrado">
-        <h3>ACTUALIZAR USUARIO</h3>
+    <h1>ACTUALIZAR USUARIO</h1>
+        <div class="formulario-actualizar">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-container">
             <?php
             // Muestra el formulario con los valores actuales del usuario
@@ -212,9 +361,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<input type='tel' id='telefono' name='telefono' value='{$filas[3]}' required>";
             }
             ?>
-
-            <button type="submit">Actualizar</button>
+            <button type="submit" class="button update-button">
+                <span>Actualizar</span>
+                <i class="fas fa-sync-alt"></i>
+            </button>
         </form>
+        
+        <a href='inicio.php' class='button-link'>
+            <button class='button back-button' style='vertical-align:middle'>
+                <span>Volver</span>
+                <i class="fa fa-solid fa-arrow-left"></i>
+            </button>
+        </a>
         <div class="update-message">
             <?php
             if (isset($_POST["usuario"])) {
@@ -222,11 +380,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             ?>
         </div>
-        <a href='inicio.php' class='button-link'>
-            <button class='button' style='vertical-align:middle'>
-                <span>Volver</span>
-            </button>
-        </a>
+        </div>
     </div>
 </div>
 </body>

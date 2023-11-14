@@ -34,10 +34,15 @@ if (isset($_SESSION['usuario'])) {
     exit(); // Detener el script si no se ha iniciado sesión
 }
 
-// Obtener la fecha y hora de la reserva
-$fecha_reserva = $_GET['fecha'];
-$hora_reserva = $_GET['hora'];
-$pista_reserva = $_GET['pista'];
+// Obtener la fecha y hora de la reserva desde $_GET
+$fecha_reserva = isset($_GET['fecha']) ? $_GET['fecha'] : '';
+$hora_reserva = isset($_GET['hora']) ? $_GET['hora'] : '';
+$pista_reserva = isset($_GET['pista']) ? $_GET['pista'] : '';
+
+// Agregar trazas
+echo "Fecha de reserva (antes de la consulta): $fecha_reserva<br>";
+echo "Hora de reserva (antes de la consulta): $hora_reserva<br>";
+echo "ID de pista (antes de la consulta): $pista_reserva<br>";
 
 // Obtener el nombre de la pista
 $query_nombre_pista = "SELECT nombre_pista FROM pistas WHERE id_pista = '$pista_reserva'";
@@ -53,9 +58,15 @@ if ($result_nombre_pista) {
         // Almacenar el valor de 'nombre_pista' en una variable
         $nombre_pista = $row_nombre_pista['nombre_pista'];
 
-        // Insertar reserva en la base de datos
-        $query = "INSERT INTO reservas (id_usuario, id_pista, fecha, hora_inicio, hora_fin) 
-                  VALUES ('$id_usuario', '$pista_reserva', '$fecha_reserva', '$hora_reserva', '$hora_reserva')";
+        // Agregar trazas
+        echo "Nombre de pista (después de la consulta): $nombre_pista<br>";
+
+        // Actualizar reserva en la base de datos
+        $query = "UPDATE reservas 
+                  SET hora_inicio = '$hora_reserva', hora_fin = '$hora_reserva' 
+                  WHERE id_usuario = '$id_usuario' 
+                        AND id_pista = '$pista_reserva' 
+                        AND fecha = '$fecha_reserva'";
         $result = $conex->query($query);
 
         if ($result) {
@@ -74,8 +85,8 @@ if ($result_nombre_pista) {
             $mail->setFrom('basketbooker@outlook.com', 'Admin');
             $mail->addAddress($correo_usuario); // Correo del usuario
 
-            $mail->Subject = 'Reserva realizada';
-            $mail->Body = "Se ha realizado una reserva para la fecha $fecha_reserva y hora $hora_reserva en la pista $nombre_pista.";
+            $mail->Subject = 'Reserva modificada';
+            $mail->Body = "Se ha modificado la reserva existente. La nueva reserva es: \nFecha: $fecha_reserva \nHora: $hora_reserva \nPista: $nombre_pista.";
 
             if ($mail->send()) {
                 echo "<!DOCTYPE html>";
@@ -83,7 +94,7 @@ if ($result_nombre_pista) {
                 echo "<head>";
                 echo "<meta charset='UTF-8'>";
                 echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
-                echo "<title>Reserva realizada</title>";
+                echo "<title>Reserva modificada</title>";
                 echo "<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.12.1/css/all.css' crossorigin='anonymous'>";
                 echo "<link rel='stylesheet' href='http://iaweb.local.com/BBooker/Estilos/procesar_reserva.css' >";
                
@@ -91,7 +102,7 @@ if ($result_nombre_pista) {
                 echo "<body>";
                 echo "<header>";
                 echo "<h1>";
-                echo "Reserva realizada con éxito";
+                echo "Reserva modificada con éxito";
                 echo "</h1>";
                 echo "</header>";
                 echo "<nav>";
@@ -108,7 +119,7 @@ if ($result_nombre_pista) {
                 echo "Salir";
                 echo "</a>";
                 echo "</nav>";
-                echo "<h2>Reserva realizada con éxito</h2>";
+                echo "<h2>Reserva modificada con éxito</h2>";
                 echo "<div id='otra-reserva'>";
                 echo "<a href='calendario.php' class='button-link'>";
                 echo "<button class='button'>";
@@ -131,13 +142,15 @@ if ($result_nombre_pista) {
                 echo "Error al enviar el correo: " . $mail->ErrorInfo;
             }
         } else {
-            echo "Error al procesar la reserva: " . $conex->error;
+            echo "Error al modificar la reserva: " . $conex->error;
         }
     } else {
-        echo "No se encontró la pista con el ID proporcionado.";
+        // Agregar trazas
+        echo "No se encontró la pista con el ID proporcionado: $pista_reserva.<br>";
     }
 } else {
     // Manejar errores de consulta para obtener el nombre_pista
+    
     echo "Error de consulta para obtener el nombre_pista: " . $conex->error;
 }
 
