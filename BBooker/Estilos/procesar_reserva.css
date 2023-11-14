@@ -1,1 +1,130 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F4F4F4;
+}
 
+header {
+    background-color: #9A8A62;
+    color: white;
+    padding: 5px;
+    text-align: center;
+}
+
+nav {
+    background-color: #444;
+    color: white;
+    padding: 5px;
+    text-align: right;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+#volver-atras {
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+#volver-atras a {
+    text-decoration: none;
+}
+
+#volver-atras button {
+    cursor: pointer;
+    background-color: #9A8A62;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+#volver-atras button:hover {
+    background-color: #7B6B4C;
+}
+
+#volver-atras button span {
+    z-index: 1;
+    color: #1b262c;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+#volver-atras button i {
+    margin-left: 10px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#volver-atras button:hover span {
+    color: #fff;
+}
+
+#volver-atras button:hover i {
+    opacity: 1;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+#otra-reserva {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#otra-reserva a {
+    text-decoration: none;
+}
+
+#otra-reserva button {
+    cursor: pointer;
+    background-color: #9A8A62;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+#otra-reserva button:hover {
+    background-color: #7B6B4C;
+}
+
+#otra-reserva button span {
+    z-index: 1;
+    color: #1b262c;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+#otra-reserva button i {
+    margin-left: 10px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#otra-reserva button:hover span {
+    color: #fff;
+}
+
+#otra-reserva button:hover i {
+    opacity: 1;
+}
