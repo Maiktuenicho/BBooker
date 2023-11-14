@@ -1,10 +1,10 @@
 <?php
 
     // generacion de variantes con los datos que se necesita para acceder a la base de datos
-    $servidor="localhost";
-    $usuario="Agustin";
-    $pass="ASIR123";
-    $bases="basketbooker";
+    $servidor="bbooker-dataserver.mysql.dataserver.com";
+    $usuario="Admin_Booker";
+    $pass="#Baloncesto23";
+    $bases="bbooker";
 
     try{
         //Si la variante conex da positivo al realizar una nueva conexion estas dentro de la base de datos
